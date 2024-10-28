@@ -18,8 +18,8 @@ A Flask-based web application designed to create a collaborative community where
 ## Installation
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/your-repository-name.git
-    cd your-repository-name
+    git clone https://github.com/Wilfred2668/gdg-project.git
+    cd gdg-project
     ```
 
 2. **Set up a virtual environment**:
