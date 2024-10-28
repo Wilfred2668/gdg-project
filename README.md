@@ -1,6 +1,6 @@
 # Community Platform for Students and Enthusiasts
 
-A Flask-based web application designed to create a collaborative community where students and enthusiasts can connect, learn, and grow. This platform enables users to explore events, join communities, and access learning resources, with separate user and admin roles for enhanced control.
+A Flask-based web application designed that embodies the spirit of GDG NMIT. This platform enables users to explore events, join communities, and access learning resources, with separate user and admin roles for enhanced control.
 
 ## Table of Contents
 - [Features](#features)
