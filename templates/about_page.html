@@ -1,0 +1,64 @@
+{% if username %}
+    {% extends "user_page_al_layout.html" %}
+{% else %}
+    {% extends "User_page_bl_layout.html" %}
+{% endif %}
+
+{% block body %}
+<style>
+    .about-container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        text-align: center;
+        line-height: 1.6;
+        color: #333;
+    }
+    .about-header {
+        font-size: 2.5em;
+        color: #4285F4;
+        margin-bottom: 20px;
+    }
+    .about-mission, .about-goals {
+        margin: 20px 0;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .about-mission h3{
+        color: #EA4335;
+        margin-bottom: 20px;
+    }
+    .about-goals h3 {
+        color: #34A853;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="about-container">
+    <h1 class="about-header">About Us</h1>
+    
+    <p>
+        We are dedicated to creating a collaborative environment where students and enthusiasts can connect, learn, and grow. Our goal is to foster a community where individuals are encouraged to explore new ideas, develop skills, and engage with peers in meaningful ways.
+    </p>
+
+    <div class="about-mission">
+        <h3>Our Mission</h3>
+        <p>
+            To inspire, educate, and empower students by providing opportunities for personal and professional growth through workshops, events, and networking with industry leaders.
+        </p>
+    </div>
+
+    <div class="about-goals">
+        <h3>Our Goals</h3>
+        <ul>
+            <li>Provide hands-on experience and practical learning.</li>
+            <li>Encourage innovation and creativity in technology.</li>
+            <li>Build a strong community of learners and leaders.</li>
+            <li>Offer resources to help students transition into the professional world.</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

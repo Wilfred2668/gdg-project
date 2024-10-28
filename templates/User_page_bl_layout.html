@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDG NMIT</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" />
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+    * {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        padding-top: 100px;
+    }
+    .nav_bar {
+        width: 100%;
+    }
+    nav {
+        width: 100%;
+        padding: 10px 10%;
+        background: #4285F4;
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .logo {
+        width: 80px;
+        height: 80px;
+        margin-left: -70px;
+    }
+    .logo-text {
+        margin-left: 20px;
+        color: white;
+        font-size: 20px;
+        width: 400px;
+        line-height: 30px;
+        
+    }
+    .nav_bar ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .nav_bar ul li {
+        list-style: none;
+        margin: 10px 10px;
+    }
+    .nav_bar ul li a {
+        padding: 15px;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        transition: all 0.2s;
+    }
+    .nav_bar ul li a:hover {
+        background-color: #EA4335;
+    }
+    .nav_bar button {
+        margin-right: -50px;
+        background: rgba(0,0,0,0.2);
+        color: white;
+        height: 60px;
+        width: 150px;
+        border: 1px solid transparent;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .nav_bar button:hover {
+        background: #34A853;
+    }
+    footer {
+        background: #4285F4;
+        font-weight: 100;
+        font-size: 10px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        width: 100%;
+        margin-top: auto;
+    }
+</style>
+<body>
+    <!-- Navbar Section -->
+    <div class="nav_bar">
+        <nav>
+            <img class="logo" src="../static/unnamed.jpg" alt="GDG NMIT Logo">
+            <p class="logo-text"><b>Google Developer Groups,<br>NMIT</b></p>
+            <ul>
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{ url_for('events') }}">Upcoming Events</a></li>
+                <li><a href="{{url_for('about')}}">About</a></li>
+                <li><a href="{{url_for('contact')}}">Contact Us</a></li>
+            </ul>
+            <button onclick="window.location.href='{{url_for('login')}}';"><b>Login / SignUp</b></button>
+        </nav>
+    </div>
+    
+    {% block body %}{% endblock %}
+
+    <footer>
+        <h2>GDG, NMIT | Copyright ©2024 Wilfred</h2>
+    </footer>
+</body>
+</html>

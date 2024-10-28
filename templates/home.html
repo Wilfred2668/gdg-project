@@ -1,0 +1,213 @@
+{% if username %}
+    {% extends "user_page_al_layout.html" %}
+{% else %}
+    {% extends "User_page_bl_layout.html" %}
+{% endif %}
+
+{% block body %}
+<style>
+    .carousel {
+        position: relative;
+        max-width: 60%;
+        margin: 30px auto;
+        max-height: 600px;  
+        overflow: hidden;
+        border-radius: 30px;
+    }
+    .carousel-container {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+    }
+    .carousel-slide {
+        min-width: 100%;
+        overflow: hidden;
+    }
+    .carousel-slide img {
+        width: 100%;
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 16/9;
+    }
+    .carousel-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-size: 2rem;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 10;
+    }
+    .prev {
+        left: 10px;
+    }
+    .next {
+        right: 10px;
+    }
+    .carousel-indicators {
+        text-align: center;
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+    }
+    .dot {
+        height: 15px;
+        width: 15px;
+        margin: 0 5px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .dot.active {
+        background-color: #717171;
+    }
+    .team-box {
+        text-align: center;
+        padding: 40px 0;
+    }
+
+    .team-box h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        color: #4285F4;
+        position: relative;
+        display: inline-block;
+    }
+
+    .team-box h1::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -10px;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 4px;
+        background-color: #EA4335;
+        border-radius: 2px;
+    }
+
+
+    .team-imgs {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        padding: 0;
+        list-style: none;
+    }
+
+    .team-imgs li {
+        width: 300px;
+        height: 300px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+
+    .team-imgs li:hover {
+        transform: scale(1.05);
+    }
+
+    .team-imgs img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+</style>
+
+    <div class="carousel">
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="../static/1.jpg" alt="Image 1">
+            </div>
+            <div class="carousel-slide">
+                <img src="../static/2.heic" alt="Image 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="../static/3.heic" alt="Image 3">
+            </div>
+        </div>
+
+        <!-- Carousel controls -->
+        <button class="carousel-control prev" onclick="moveSlide(-1)">❮</button>
+        <button class="carousel-control next" onclick="moveSlide(1)">❯</button>
+
+        <!-- Carousel indicators -->
+        <div class="carousel-indicators">
+            <span class="dot" onclick="setCurrentSlide(0)"></span>
+            <span class="dot" onclick="setCurrentSlide(1)"></span>
+            <span class="dot" onclick="setCurrentSlide(2)"></span>
+        </div>
+    </div>
+
+    <div class="team-box">
+        <h1>Our Team...</h1>
+        <ul class="team-imgs">
+            <li><img src="../static/lead.jpg" alt="Team Lead"></li>
+            <li><img src="../static/co lead.webp" alt="Co Lead"></li>
+            <li><img src="../static/tech lead.jpg" alt="Tech Lead"></li>
+            <li><img src="../static/marketing lead.webp" alt="Marketing Lead"></li>
+            <li><img src="../static/social lead.webp" alt="Social Lead"></li>
+            <li><img src="../static/ms lead.webp" alt="ML Lead"></li>
+            <li><img src="../static/gcp lead.webp" alt="GCP Lead"></li>
+            <li><img src="../static/content lead.webp" alt="Content Lead"></li>
+            <li><img src="../static/pr lead.webp" alt="PR Lead"></li>  
+        </ul>
+    </div>
+    
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    const slideInterval = 3000; // 3 seconds interval
+
+    function showSlide(index) {
+        if (index >= slides.length) currentSlide = 0;
+        if (index < 0) currentSlide = slides.length - 1;
+        
+        const container = document.querySelector('.carousel-container');
+        container.style.transform = `translateX(-${currentSlide * 100}%)`; // Slide entire container
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+    }
+
+    function moveSlide(n) {
+        showSlide(currentSlide += n);
+    }
+
+    function setCurrentSlide(n) {
+        showSlide(currentSlide = n);
+    }
+
+    // Auto-slide function
+    function autoSlide() {
+        moveSlide(1);
+    }
+
+    // Initialize the first slide and start auto-slide
+    showSlide(currentSlide);
+    setInterval(autoSlide, slideInterval);
+
+    function showAlertMessage(message) {
+            alert(message); //
+    }
+
+    // Check if there are flash messages from the server
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                showAlertMessage("{{ message }}"); // Call the alert function
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+</script>
+{% endblock %}
